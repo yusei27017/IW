@@ -3,7 +3,6 @@ import requests
 def insert_lect_data():
     data = {
         "name": "John Doe",
-        "email": "john.doe@example.com"
     }
     res = requests.post('http://127.0.0.1:5000/lecturers',json=data)
     return res
@@ -13,7 +12,7 @@ def insert_courses_data():
         "course_name": "Introduction to Data Science",
         "description": "Learn the basics of data science and analysis.",
         "start_time": "01:00",
-        "end_time": "02:00",
+        "end_time": "02:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:0002:00",
         "lecturer_id": 1 
     }
 
@@ -22,10 +21,12 @@ def insert_courses_data():
     return res
 
 def del_courses():
-    course_id = 1
+    course_id = -1
     res = requests.delete(f'http://127.0.0.1:5000/courses/{course_id}')
     return res
 
 if __name__ == "__main__":
     print(del_courses())
+    print(insert_courses_data())
+    print(insert_lect_data())
 
