@@ -1,0 +1,32 @@
+version: '3'
+services:
+  python-flask-base:
+    build:
+      context: .
+    container_name: python-flask-base
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./python_base:/python_base
+    command: python3 /python_base/app.py
+    networks:
+      - dev-network
+
+  dev-mysql:
+    image: mysql:5.7
+    container_name: dev-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: a123456
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
